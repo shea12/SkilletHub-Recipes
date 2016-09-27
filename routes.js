@@ -3,7 +3,7 @@ var usersController = require('./controller.js');
 
 
 usersRouter.route('/login').get(function(req, res) {
-  usersController.login(function(error, data) {
+  usersController.login(req, function(error, data) {
   	if (error) {
   	  console.log('error in /user/login route');
   	  res.send(400);
@@ -14,7 +14,7 @@ usersRouter.route('/login').get(function(req, res) {
 });
 
 usersRouter.route('/logout').get(function(req, res) {
-  usersController.logout(function(error, data) {
+  usersController.logout(req, function(error, data) {
   	if (error) {
   	  console.log('error in /user/logout route');
   	  res.send(400);
@@ -24,8 +24,8 @@ usersRouter.route('/logout').get(function(req, res) {
   });
 });
 
-usersRouter.route('/signup').get(function(req, res) {
-  usersController.signup(function(error, data) {
+usersRouter.route('/signup').post(function(req, res) {
+  usersController.signup(req, function(error, data) {
   	if (error) {
   	  console.log('error in /user/signup route');
   	  res.send(400);
