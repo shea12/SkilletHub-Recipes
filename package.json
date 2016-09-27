@@ -16,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/jbg46209/SkilletHub-Recipes/issues"
   },
-  "homepage": "https://github.com/jbg46209/SkilletHub-Recipes#readme"
+  "homepage": "https://github.com/jbg46209/SkilletHub-Recipes#readme",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.0.2"
+  }
 }
