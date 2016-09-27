@@ -1,7 +1,7 @@
 {
-  "name": "skillethub-recipes",
+  "name": "SkilletHub-Users",
   "version": "1.0.0",
-  "description": "",
+  "description": "Users Microservice",
   "main": "server.js",
   "scripts": {
     "test": "mocha spec/",
@@ -9,16 +9,35 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jbg46209/SkilletHub-Recipes.git"
+    "url": "https://github.com/JAC-Labs/SkilletHub-Users.git"
   },
   "author": "JAC-Labs",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/jbg46209/SkilletHub-Recipes/issues"
+    "url": "https://github.com/JAC-Labs/SkilletHub-Users/issues"
   },
-  "homepage": "https://github.com/jbg46209/SkilletHub-Recipes#readme",
+  "homepage": {
+    "url": "https://github.com/JAC-Labs/SkilletHub-Users#readme"
+  },
   "devDependencies": {
     "chai": "^3.5.0",
-    "mocha": "^3.0.2"
+    "mocha": "^3.0.2",
+    "grunt": "^1.0.1",
+    "nodemon": "^1.10.2"
+  },
+  "dependencies": {
+    "amazon-cognito-identity-js": "^1.5.0",
+    "aws-sdk": "^2.6.4",
+    "big-integer": "^1.6.16",
+    "bluebird": "^3.4.6",
+    "body-parser": "^1.15.2",
+    "colors": "^1.1.2",
+    "express": "^4.14.0",
+    "express-session": "^1.14.1",
+    "mongoose": "^4.6.1",
+    "passport": "^0.3.2",
+    "passport-google": "^0.3.0",
+    "passport-google-oauth2": "^0.1.6",
+    "underscore": "^1.8.3"
   }
 }
