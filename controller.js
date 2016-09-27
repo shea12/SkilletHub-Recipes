@@ -1,12 +1,14 @@
 /***************    MODULES AND CONFIGS    ******************
-
 ************************************************************/
 var AWS = require('aws-sdk');
-var passport = require('passport');
-var session = require('express-session');
-var GoogleStrategy = require('passport-google-oauth2').Strategy;
+// var passport = require('passport');
+// var session = require('express-session');
+// var GoogleStrategy = require('passport-google-oauth2').Strategy;
 var AmazonCognitoIdentity = require('amazon-cognito-identity-js');
 var CognitoUserPool = AmazonCognitoIdentity.CognitoUserPool;
+var USER_POOL_APP_CLIENT_ID = 'fmh3mf2be83pf4igtu29fqhq3';
+var USER_POOL_ID = 'us-west-2_P8tGz1Tx6';
+var COGNITO_IDENTITY_POOL_ID = 'us-west-2:ea2abcb1-10a0-4964-8c13-97067e5b50bb';
 
 
 
@@ -110,12 +112,6 @@ exports.login = function(req, cb) {
   });
 
 
-
-
-
-
-
-
   // Expecting res to contain:
   //   userId
   //   session token
@@ -129,9 +125,19 @@ exports.login = function(req, cb) {
 ************************************************************/
 exports.logout = function(req, cb) {
   // Expecting req.body to contain:
-  //   username or userID?
+  //   username
+  var poolData = { 
+    UserPoolId: USER_POOL_ID,
+    ClientId: USER_POOL_APP_CLIENT_ID
+  };
+  var userPool = new AWSCognito.CognitoIdentityServiceProvider.CognitoUserPool(poolData);
+  var userData = {
+    Username : req.body.username,
+    Pool : userPool
+  };
+  var cognitoUser = new AWSCognito.CognitoIdentityServiceProvider.CognitoUser(userData);
 
-  // Need to end session
+  cognitoUser.signOut();
 
   // Expecting res to contain:
   //   "logged out"
