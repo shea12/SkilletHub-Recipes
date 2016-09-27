@@ -1,0 +1,20 @@
+{
+  "name": "skillethub-recipes",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "mocha spec/",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jbg46209/SkilletHub-Recipes.git"
+  },
+  "author": "JAC-Labs",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jbg46209/SkilletHub-Recipes/issues"
+  },
+  "homepage": "https://github.com/jbg46209/SkilletHub-Recipes#readme"
+}
