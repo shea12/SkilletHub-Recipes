@@ -26,8 +26,6 @@ exports.signup = function(req, cb) {
   //   lastName
   //   email
 
-  console.log('req.body.username ', req.body.username);
-
   var poolConfig = {
     UserPoolId: USER_POOL_ID,
     ClientId: USER_POOL_APP_CLIENT_ID
@@ -64,6 +62,7 @@ exports.signup = function(req, cb) {
       cb(error, null);
     } else {
       cognitoUser = result.user;
+      cognitoUser.confirmUser;
       console.log('Sign up successful for user: ', cognitoUser);
       cb(null, cognitoUser);
     }
@@ -91,17 +90,17 @@ exports.login = function(req, cb) {
     Password: req.body.password
   }
 
-  var authDeets = new AWSCognito.CognitoIdentityServiceProvider.AuthenticationDetails(authData);
+  var authDeets = new AWS.CognitoIdentityServiceProvider.AuthenticationDetails(authData);
   var poolConfig = {
     UserPoolId: USER_POOL_ID,
     ClientId: USER_POOL_APP_CLIENT_ID
   }
-  var userPool = new AWS.AWSCognito.CognitoIdentityServiceProvider.CognitoUserPool(poolConfig);
+  var userPool = new AWS.CognitoIdentityServiceProvider.CognitoUserPool(poolConfig);
   var userData = {
       Username : req.body.username,
       Pool : userPool
   };
-  var cognitoUser = new AWSCognito.CognitoIdentityServiceProvider.CognitoUser(userData);
+  var cognitoUser = new AWS.CognitoIdentityServiceProvider.CognitoUser(userData);
 
   cognitoUser.authenticateUser(authDeets, {
     onSuccess: function (result) {
@@ -142,12 +141,12 @@ exports.logout = function(req, cb) {
     UserPoolId: USER_POOL_ID,
     ClientId: USER_POOL_APP_CLIENT_ID
   };
-  var userPool = new AWSCognito.CognitoIdentityServiceProvider.CognitoUserPool(poolData);
+  var userPool = new AWS.CognitoIdentityServiceProvider.CognitoUserPool(poolData);
   var userData = {
     Username : req.body.username,
     Pool : userPool
   };
-  var cognitoUser = new AWSCognito.CognitoIdentityServiceProvider.CognitoUser(userData);
+  var cognitoUser = new AWS.CognitoIdentityServiceProvider.CognitoUser(userData);
 
   cognitoUser.signOut();
 
