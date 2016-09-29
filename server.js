@@ -9,13 +9,7 @@ service.listen(port, function() {
 
 service.use(bodyParser.urlencoded());
 
-// import router, assign to /user/wildcard route
 var usersRouter = require('./routes.js');
 service.use('/user', usersRouter);
-
-// service.get('/', function (req, res) {
-//   res.json({ message: 'This is the SkilletHub Users Service' });
-// });
-
 
 module.exports = service;
